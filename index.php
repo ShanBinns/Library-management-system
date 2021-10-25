@@ -1,8 +1,6 @@
 <!--
     Name: Shanique Binns
-    ID: 1400987
     Programme: Web Systems Design and Implementation
-    Lab Class: Friday at 12PM
 -->
 
 
@@ -20,15 +18,15 @@
     <div class="header">
         <a href="" class="name"> <h1><strong>Sana High School</strong></h1></a>
         <div class="header-right">
-            <a href="HSlogin.php" class="logout"><i class="fas fa-power-off"></i> Login</a>
+            <a href="login.php" class="logout"><i class="fas fa-power-off"></i> Login</a>
         </div>
     </div>
 
-    <div class="page-design container">
+    <div class="index-design container">
         <div class="page-heading">
             <h3><strong>Online Library Management System</strong></h3>
             <div class="welcome-button container">             
-                    <button type="submit" class="welcome-btn" onclick="location.href='HSlogin.php'"><span>Login In Here</span></button>                       
+                    <button type="submit" class="welcome-btn" onclick="location.href='login.php'"><span>Login In Here</span></button>                       
                 </div>
         </div>
 

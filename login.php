@@ -15,13 +15,13 @@ session_start();
     </style>
 </head> 
 <body>
-        <div class="page-design container">                 
+        <div class="login-design container">                 
             <div class="login-form container">                
                 <form method="post" action="controller/login_validate.php">
                     <h1><strong>SHS Library Management System</strong><img src="img/book.png" alt="" class="logo"> </h1>
+                    <h3> Welcome Back! Log into your account.</h3>
             
                     <!--Error shown if username or password is entered incorrectly-->
-                    <p><span class="error">* required field</span></p>
                     <?php 
                         if(!empty($_SESSION['loginErr'])){
                             echo '<div class="error">' . $_SESSION['loginErr'] . '</div>';
@@ -30,17 +30,17 @@ session_start();
                     ?>
                     
                     <fieldset>
-                        `<!--username-->
-                        <label for="username" class="username" value="<?php if(isset($_COOKIE['username'])){echo $_COOKIE['username'];} else {echo "";} ?>"><strong>Username: <span class="error">*</span></strong></label>
+                        `<!--email-->
+                        <label for="email" class="email" value="<?php if(isset($_COOKIE['email'])){echo $_COOKIE['email'];} else {echo "";} ?>"><strong>Email: <span class="error">*</span></strong></label>
                         <span class="error">
                         <?php 
-                            if(!empty( $_SESSION['usernameErr'])){
-                                echo  $_SESSION['usernameErr'];
-                                unset($_SESSION['usernameErr']);
+                            if(!empty( $_SESSION['emailErr'])){
+                                echo  $_SESSION['emailErr'];
+                                unset($_SESSION['emailErr']);
                             }        
                         ?>
                         </span>
-                        <input type="text" name="username" placeholder= "HSadmin">
+                        <input type="text" name="email" required>
 
                         
                         <!--password-->
@@ -53,12 +53,18 @@ session_start();
                             }        
                         ?>
                         </span>
-                        <input type="password" name="password" placeholder="HSpages123">
+                        <input type="password" name="password" required>
                     </fieldset>
 
+
                     <fieldset>
-                    <button type="submit"class="btn-submit" name="login">Submit</button><br>
+                    <button type="submit"class="btn-submit" name="submit">Login</button><br>
                     <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                    </fieldset>
+
+                    <fieldset class="other-actions">
+                        <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                        <p>Forgot your password? <a href="passwordReset.php">Click to reset password</a>.</p>
                     </fieldset>
                 </form>
             </div>

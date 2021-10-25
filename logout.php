@@ -7,6 +7,6 @@
 
     session_destroy();
 
-    header("location:HSindex.php");
+    header("location:index.php");
     exit;
 ?>

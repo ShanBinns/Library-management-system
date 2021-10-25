@@ -1,4 +1,5 @@
 <?php
+    require_once "../include/config.php";
     
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
         header("location: ../HSaddbook.php");
@@ -6,60 +7,45 @@
     }
 
 
-    $username = $password = "";
-    $usernameErr = $passwordErr = $loginErr ="";
+    $email = $password = "";
+    $emailErr = $passwordErr = "";
     $loginErr = "Incorrect Password or Username";
 
-    if(isset($_POST['login'])){
-        if(empty($_POST["username"])){
-            $usernameErr = "Username is required";
-        }else{
-            $username = test_input($_POST["username"]);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
-                $usernameErr = "Only letters and white space allowed";
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        if(isset($_POST['submit'])){
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $password = mysqli_real_escape_string($conn, $_POST['password']);
+            if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                $email_error = "Please enter a Valid Email Address";
             }
-        }
-
-        if(empty($_POST["password"])){
-            $passwordErr = "Password is required";
-        }else{
-            $password = test_input($_POST["password"]);
-        }
-
+        
+            if(strlen($password) <6){
+                $passwordErr = "Password must be minimum of 6 characters";
+            }
         
         
-        if(empty($usernameErr) && empty($passwordErr)){
-            if(($username=='HSadmin') && ($password =='HSpages123') ){
-                if(isset($_POST['remember'])){                       //Setting cookies
-                    setcookie('username',$username, time()+(60*60*7),"/");                        
+        if(empty($emailErr) && empty($passwordErr) ){
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '". $email. "' and password = '". md5($password). "'");
+
+            if(!empty($result)){
+                if($row = mysqli_fetch_array($result)){
+                    $_SESSION['userid'] = $row['userid'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['password'] = $row['password'];
+                    header("location: ../HSaddbook.php");
                 }
-
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION["username"] = $username; 
-                header("Location: ../HSaddbook.php");
-            }
-            else{
-                session_start();
-                $_SESSION['loginErr'] = $loginErr;   
-                header("Location: ../HSlogin.php");
             }
         }
         else{
             session_start();
-            //Sending error messages back through sessions
-            $_SESSION['usernameErr'] =$usernameErr ;
+            $_SESSION['emailErr'] =$emailErr ;
             $_SESSION['passwordErr'] = $passwordErr  ;
             $_SESSION['loginErr'] = $loginErr;
-            header("Location: ../HSlogin.php");
+            header("Location: ../login.php");
         }
     }
 
-    function test_input($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+}
 
 ?>

@@ -150,7 +150,7 @@ a{
 }
 
 .HSfooter {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -170,13 +170,22 @@ a{
 }
 
 /*Index and login pages layout*/
-.page-design{
+.index-design{
     height: 500px;
     width: 100%;   
-    overflow: hidden;
+    overflow:hidden;
 }
 
-.page-design::after {  /* Adding Opactiy to background image*/
+.login-design{
+    height: 1000px;
+    width: 100%;   
+    overflow:hidden;
+    background: -webkit-linear-gradient(top, var(--body-color-one), var(--body-color-two));
+    
+}
+
+
+.index-design::after{  /* Adding Opactiy to background image*/
     content: "";
     background: url("../img/book1.jpg") no-repeat 0 0;
     background-size: 1400px 620px;
@@ -197,8 +206,11 @@ a{
     font-family: Arial, sans-serif;
 }
 
-.page-design h1,h2,h3{
+.index-design h1,h2,h3,
+.login-design h1,h2,h3{
     color: var(--title-color);
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 input::-webkit-outer-spin-button,
@@ -213,6 +225,11 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.other-actions p{
+    text-align: center;
+    margin: 10px;
 }
 
 
@@ -273,12 +290,12 @@ margin-bottom: 5px;
 .welcome-btn{
     margin: 50px;
     background-color:var(--title-color);
-    border-radius: 50%;
+    border-radius: 10%;
     border: none;
     color: var(--body-color-two);
     text-align: center;
-    padding: 20px;
-    width: 250px;
+    padding: 15px;
+    width: 200px;
     font-size: var(--h2-font-size);
     transition: all 0.5s;
     cursor: pointer;
@@ -312,7 +329,7 @@ margin-bottom: 5px;
 /* Login Page */
 
 .login-form{
-    background-color: var(--color-light);
+    background-color: var(--theme-color);
     max-width: 500px;
     margin: 10px auto;
     padding: 10px 20px;
@@ -325,8 +342,9 @@ margin-bottom: 5px;
     max-height: 10%;
 }
 
-.login-form h1{
+.login-form h2,h3{
     text-align: center;
+    margin-bottom: 20px;
 }
 
 
@@ -353,10 +371,10 @@ input[type=password]:focus {
 }
 
 fieldset {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border: none;
-}
 
+}
 label {
     display: block;
     margin-bottom: 8px;
@@ -370,8 +388,8 @@ label.light {
 .btn-submit{
     background-color: var(--first-color);
     color:var(--body-color-two);
-    padding: 19px 39px 18px 39px;
-    font-size: 18px;
+    padding: 15px 30px 15px 30px;
+    font-size: 23px;
     text-align: center;
     font-style: normal;
     border-radius: 5px;
@@ -399,7 +417,7 @@ label.light {
     margin-top: 10px;
     padding:5px;
     border: var(--theme-color) 1px solid;
-    height: 750px;
+    height: 950px;
 }
 
 .section-heading{
@@ -427,7 +445,7 @@ label.light {
 
 .form1{
     overflow:hidden;
-    max-width: 900px;
+    max-width: 800px;
     max-height: 900px;
     margin: 10px auto;
     padding: 10px 20px;
@@ -798,6 +816,5 @@ opacity: 0.7;
 
     
 }
-
 
 
