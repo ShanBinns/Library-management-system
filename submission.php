@@ -2,14 +2,7 @@
     session_start();
     include 'include/header-sidenav.php'; 
 
-    $_SESSION['title'];
-    $_SESSION['author'] ; 
-    $_SESSION['year'] ; 
-    $_SESSION['image'];
-    $_SESSION['isbn']; 
-    $_SESSION['callNumber']; 
-    $_SESSION['subjectArea']; 
-    $_SESSION['copies']; 
+    
 
     $title = $_SESSION['title'] ;
     $author = $_SESSION['author'] ; 
@@ -78,7 +71,7 @@
                     </div>
 
                     <div class="card">
-                        <span class="zoom"><img src="img/<?php echo $_SESSION['image'];?>" alt="" height="100%" width="70%"> </span>
+                        <span class="zoom"><img src="img/<?php echo $_SESSION['image'];?>" alt="" height="70%" width="50%"> </span>
 
                         <h1><?php echo $_SESSION['title'] ;?></h1>
                         <p class="author"><?php echo $_SESSION['author'] ;?></p>
@@ -95,7 +88,7 @@
                         <p><button><a href="HSviewbooks.php">View All Books in Library</a></button></p>
                     </div>
                 </div>
-           </div>
+            </div>
         </div>
     </div>
 </body>

@@ -30,7 +30,7 @@ session_start();
                     ?>
                     
                     <fieldset>
-                        `<!--email-->
+                        <!--email-->
                         <label for="email" class="email" value="<?php if(isset($_COOKIE['email'])){echo $_COOKIE['email'];} else {echo "";} ?>"><strong>Email: <span class="error">*</span></strong></label>
                         <span class="error">
                         <?php 

@@ -2,7 +2,9 @@
 Header and side nav
 Index Page 
 Login Page
+Sign up page  
 LMS Body Layout
+Dashboard
 Add book form and progress bar
 Submission page
 Media Queries
@@ -107,14 +109,18 @@ a{
 
 .sidenav {
     height: 100%;
-    width: 160px;
+    width: 180px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color:var(--body-color-one);
     overflow-x:hidden;
-    padding-top: 20px;
+    padding-top: 8px;
+}
+
+.sidenav i{
+    font-size:.8em;
 }
 
 .sidenav-title a{
@@ -124,8 +130,8 @@ a{
 }
 
 .sidenav-items a {
-    padding: 20px 10px 8px 16px;
-    font-size: var(--h3-font-size);
+    padding: 20px 0px 5px 10px;
+    font-size: var(--normal-font-size);
     color: var(--theme-color);
     display: block;
 }
@@ -279,7 +285,7 @@ margin-bottom: 5px;
     font-size: var(--smaller-font-size);
 }
 
-/* Index Page */
+/* Index Page Button*/
 
 
 .welcome-button{
@@ -326,7 +332,7 @@ margin-bottom: 5px;
     right: 0;
 }
 
-/* Login Page */
+/* Login and Sign up Form*/
 
 .login-form{
     background-color: var(--theme-color);
@@ -359,8 +365,8 @@ input[type=password]{
     padding: 15px;
     margin-right: 10px;
     width: 95%;
-    background-color: #e8eeef;
-    color: #8a97a0;
+    background-color: var(--body-color-two);
+    color: var(--light-grey);
     margin-bottom: 30px;
 }
 
@@ -405,10 +411,73 @@ label.light {
     opacity: 1;
 }
 
+
+/* Sign up page slider */
+
+.slide-controls{
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    margin: 30px 0 25px 0;
+    justify-content: space-between;
+    border: 1px solid var(--color-light);
+    border-radius: 5px;
+    
+}
+.slide-controls .slide{
+    height: 100%;
+    width: 100%;
+    color: var(--body-color-two);
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.6s ease;
+}
+.slide-controls label.admin{
+    color: var(--first-color);
+}
+.slide-controls .slider-tab{
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, var(--first-color), var(--color-light));
+    transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+input[type="radio"]{
+    display: none;
+}
+
+#admin:checked ~ .slider-tab{
+    left: 50%;
+}
+#admin:checked ~ label.admin{
+    color: var(--body-color-two);
+    cursor: default;
+    user-select: none;
+}
+#admin:checked ~ label.librarian{
+    color: var(--first-color);
+}
+#librarian:checked ~ label.admin{
+    color: var(--first-color);
+}
+#librarian:checked ~ label.librarian{
+    cursor: default;
+    user-select: none;
+}
+
 /* LMS Body Layout - Reusable Designs*/
 
 .main-body{
-    margin-left: 160px;
+    margin-left: 180px;
     padding: 0px 30px;
 }
 
@@ -433,11 +502,84 @@ label.light {
 
 .section-content{
     padding: 10px;
+    margin: 10px 15px 10px 15px;
 }
 
 .section-content h2{
     text-align: center;
     color:var(--text-color);
+}
+
+
+/*Dashboard*/
+
+.dashboard-title{
+    margin: 3px 0 15px 0;
+    padding: 5px;
+}
+
+
+.dash-container1{
+    float: right;
+}
+
+.dash-container2{
+    float: left;
+}
+
+.dash-container3{
+    float: center;
+}
+
+.dash-container1 .card,
+.dash-container2 .card,
+.dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 300px;
+    
+}
+
+.dash-container1 .card-title,
+.dash-container2 .card-title,
+.dash-container3 .card-title{
+
+    font-size:var(--h3-font-size);
+}
+
+.dash-container1 p,
+.dash-container2 p,
+.dash-container3 p{
+    font-size:3em;
+}
+
+.dash-container1 .dash,
+.dash-container2 .dash,
+.dash-container3 .dash{
+    background-color: var(--color-light);
+    font-size:.7em;
+}
+
+.dash-container1 .dash:hover,
+.dash-container2 .dash:hover,
+.dash-container3 .dash:hover{
+    background-color: var(--theme-color);
+}
+
+
+.dash-card1{
+    background-color: var(--theme-color);
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.dash-card2{
+    background-color: var(--color-light);
+    margin-bottom: 70px;
+}
+
+.dash-card3{
+    background-color: var(--color-light);
 }
 
 
@@ -643,6 +785,21 @@ opacity: 0.7;
 
 
 /*View Book page*/
+
+.action-Btn{
+    width: 10;
+    background-color: var(--theme-color);
+    border-radius: 25%;
+}
+
+#searchByName{
+    visibility: hidden;
+}
+
+
+
+/*Log Book and  Return Book page */
+
 .table-view-books table, td, th {
     border: 2px solid var(--color-light);
 }
@@ -729,6 +886,37 @@ opacity: 0.7;
     .sidenav-title{
         content: "SANA";
     }
+
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 150px;
+    
+    }
+
+    .dash-container1 p,
+    .dash-container2 p,
+    .dash-container3 p{
+        font-size:2em;
+}
+}
+
+@media screen and (max-width: 903px) {
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 150px;
+    }
+
+    .dash-container1 p,
+    .dash-container2 p,
+    .dash-container3 p{
+        font-size:1em;
+}
 }
 
 @media screen and (max-width: 640px) {
@@ -742,6 +930,20 @@ opacity: 0.7;
     .sidenav-title{
         content: "SANA";
     }
+
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 150px;
+    }
+
+    .dash-container1 .card-title,
+    .dash-container2 .card-title,
+    .dash-container3 .card-title{
+        font-size:1em;
+}
 }
 
 
@@ -773,6 +975,20 @@ opacity: 0.7;
         content: "SANA";
     }
 
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+        text-align:center;
+        margin-top:-20px;
+        width: 40px;
+    }
+
+    .dash-container1 p,
+    .dash-container2 p,
+    .dash-container3 p{
+        font-size:1em;
+    }
+
 }
 
 
@@ -793,6 +1009,15 @@ opacity: 0.7;
     .sidenav-title{
         content: "SANA";
     }
+
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 20px;
+    }
+
 }
 
 @media screen and (max-width: 2500px) {
@@ -814,7 +1039,17 @@ opacity: 0.7;
         margin-left: 80px;
     }
 
+    .dash-container1 .card,
+    .dash-container2 .card,
+    .dash-container3 .card{
+    text-align:center;
+    margin-top:-20px;
+    width: 100px;
+    
+    }
+
     
 }
+
 
 

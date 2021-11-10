@@ -3,7 +3,7 @@
 $dbserver ="localhost";
 $user = "root";
 $password = "";
-$dbname = "library_management";
+$dbname = "highschoolbooks_db";
 
 
     try{

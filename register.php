@@ -20,6 +20,14 @@ session_start();
                 <form method="post" action="controller/register_validate.php">
                     <h1><strong>SHS Library Management System</strong><img src="img/book.png" alt="" class="logo"> </h1>
                     <h3> Welcome! Please fill this form to create an account.</h3>
+
+                    <div class="slide-controls">
+                        <input type="radio" name="type" value="librarian" id="librarian" checked>
+                        <input type="radio" name="type" value="administrator" id="admin">
+                        <label for="librarian"  class="slide librarian">Sign up as Librarian</label>
+                        <label for="admin"  class="slide admin">Sign up as Administrator</label>
+                        <div class="slider-tab"></div>
+                    </div>
             
                     <!--Error shown if username or password is entered incorrectly-->
                     <?php 

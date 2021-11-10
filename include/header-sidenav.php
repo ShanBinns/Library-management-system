@@ -35,11 +35,12 @@
         </div>
         <div class="sidenav-items">
             <a href="#"></a>
-            <a href="#dashboard">Dashboard </a>
-            <a href="HSaddbook.php">Add Books</a>
-            <a href="HSviewbooks.php">View Books</a>
-            <a href="#search">Search Books</a>
-            <a href="#borrow">Borrow Books</a>
+            <a href="dashboard.php"><i class="fas fa-home"></i> Dashboard </a>
+            <a href="HSaddbook.php"><i class="fas fa-plus-circle"></i > Add Books</a>
+            <a href="HSviewbooks.php"><i class="fas fa-eye"></i> View Books</a>
+            <a href="issuebooks.php"><i class="fas fa-asterisk"></i> Issue Books</a>
+            <a href="patrons.php"><i class="fas fa-search"></i> Search Patron Records</a>
+            <a href="account.php"><i class="fas fa-users-cog"></i> Manage Accounts</a>
         </div>
         <div class="sidenav-footer">
             <img src="img/book.png" alt="books" class="logo">

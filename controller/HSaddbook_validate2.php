@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    require_once "../include/config.php";
+    
+    $title = $_SESSION['title'] ;
+    $author = $_SESSION['author'] ; 
+    $year = $_SESSION['year'] ; 
+    $image = $_SESSION['image'];
+
     $callNumber = 0;
     $isbn = $callNumber = $subjectArea = $copies = "";
     $invalidErr = "Please fill in a valid value for all fields";
@@ -45,12 +53,29 @@
             }
 
             if(empty($isbnErrStyle) && empty($callNumStyle) && empty($subAreaStyle)&& empty($copyErrStyle)){
-                session_start();
-                $_SESSION['isbn'] =$_POST['isbn'];  
-                $_SESSION['callNumber'] =$_POST['callNumber'];
-                $_SESSION['subjectArea'] =$_POST['subjectArea'];
-                $_SESSION['copies'] =$_POST['copies'];
-                header("Location: ../submission.php");                        
+
+                $sql = "INSERT INTO book (isbn, title, author, year,bookcover,callNo,subjectarea,quantity) VALUES ('". $isbn ."', '". $title ."','". $author ."','". $year ."', '". $image ."', '". $callNumber ."', '". $subjectArea ."', '". $copies ."')";
+                    
+                
+                if(mysqli_query($conn, $sql))
+                {
+                    session_start();
+                    $_SESSION['title'];
+                    $_SESSION['author'] ; 
+                    $_SESSION['year'] ; 
+                    $_SESSION['image'];
+                    $_SESSION['isbn'] = $isbn; 
+                    $_SESSION['callNumber'] = $callNumber; 
+                    $_SESSION['subjectArea']  = $subjectArea; 
+                    $_SESSION['copies']  = $copies; 
+                    header("Location: ../submission.php");
+                    exit();
+                }else{
+                    session_start();
+                    $_SESSION['invalidErr'] = $invalidErr;
+                    header("Location: ../HSaddbook2.php");
+                }
+                mysqli_close($conn);                    
             }
             else{
                 session_start();
