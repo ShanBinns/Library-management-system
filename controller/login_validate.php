@@ -29,6 +29,7 @@
 
             if(!empty($result)){
                 if($row = mysqli_fetch_array($result)){
+                    session_start();
                     $_SESSION['userid'] = $row['libid'];
                     $_SESSION['username'] = $row['name'];
                     $_SESSION['email'] = $row['email'];

@@ -1,10 +1,13 @@
 <?php
 require_once "include/config.php";
+session_start();
 
 $request = 1;
 if(isset($_POST['request'])){
     $request = $_POST['request'];
 }
+
+
 
 if($request == 1){
     $draw = $_POST['draw'];
@@ -25,6 +28,7 @@ if($request == 1){
     author like'%".$searchValue."%' ) ";
     }
 
+    
     $sel = mysqli_query($conn,"select count(*) as allcount from book");
     $records = mysqli_fetch_assoc($sel);
     $totalRecords = $records['allcount'];
@@ -44,9 +48,8 @@ if($request == 1){
 
         // Delete Button
         $deleteButton = "<button class='btn btn-sm btn-danger deleteBook' data-id='".$row['id']."'>Delete</button>";
-
-        //Issue Button
-        $issueButton = "<button class='btn btn-sm btn-warning issueBook' data-id='".$row['id']."'>Issue</button>";
+        
+        $issueButton = "<button class='btn btn-sm btn-warning issueBook' data-id='".$row['id']."'>Preview & Issue</button>";
         
         $action = $updateButton." ".$deleteButton." ".$issueButton;
 

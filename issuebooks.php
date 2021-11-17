@@ -3,20 +3,27 @@
     require_once "include/config.php";
     include 'include/header-sidenav.php'; 
 
-    //This info should collect from the  database borrow book table
-
+    //Gets info from the database borrow book table
     $sql = "SELECT * FROM book";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $book_list[] = $row;
+            $books[] = $row;
+        }
+    } 
+
+    //This query inner joins the borrowed and returned book tables to use the issued books
+    $queryTwo = "SELECT b.*, r.* FROM borrowbook b, returnbook r
+                WHERE b.isbn=r.isbn";
+    $innerjoinResult = $conn->query($queryTwo);
+
+    if ($innerjoinResult->num_rows > 0) {
+        while($row = $innerjoinResult->fetch_assoc()) {
+            $join_books[] = $row;
         }
     } 
     $conn->close();
-
-    //Borrow - click the action tab of the viewbooks page to make someone borrow a book. This button will cause the book to be added to the borrow database table and the count of the book table to decrease. Send user to Issued books table. And to return a book, go to the Issued book page and select returned button, that will do the opposite of what is above and place returned in another row.
-    //BorrowBook: (cardID, ISBN, libID, Date)
 ?>
 
 
@@ -36,6 +43,62 @@
             <div class="section-heading">
                 <h3><i class="fas fa-asterisk"></i> Log Borrowed and Returned Books</h3>
             </div>
+
+            <div class="section-content">
+
+            <h2>Below is the list of books</h2>
+            
+
+            <!--Add another form section that shows pending here, then add to table below-->
+                <div class="table-view-books">
+                <form action="borrow.php?page=borrow" method="post">
+                    <table>
+                        <tr>
+                            <th>Patron Card ID</th>
+                            <th>Librarian ID</th>
+                            <th>IBSN</th>
+                            <th>Borrowed Date</th>
+                            <th>Returned Date</th>
+                            <th>Action</th> <!---borrowed tag or returned tag-->
+                        </tr>
+                        <tbody>
+                            <?php  if(empty($join_books)):?>     
+                                <tr>
+                                    <td colspan="5" style="text-align:center;">There are no issued books in the library</td>
+                                </tr>  
+                            <?php  else:?> 
+                                
+                            <?php  foreach ($join_books as $joinedBooks): ?> 
+                            <td class="cardid"><?=$joinedBooks['cardid']?> </td>
+                            <td class="libid"><?=$joinedBooks['libid']?> </td>
+                            <td class="isbn"><?=$joinedBooks['isbn']?> </td>
+                            <td class="borrow-date"><?=$joinedBooks['bdate']?> </td>
+                            <td class="return-date"><?=$joinedBooks['rdate']?> </td>
+
+                                <td class="action">    
+                                <button class="btn-borrowed">Borrowed</button>
+                                <button class="btn-returned" >Returned</button>
+                    
+                                </td>                   
+                            </tr>
+                            <?php  endforeach;?>
+                            <?php  endif;?> 
+
+
+
+                    </tbody>
+                
+                </table>
+            </form>
+        </div>
+
+
+
+
+
+
+                        <br><br><br><br><br><br><br>
+        <!--Old Table-->
             <div class="section-content">
 
             <h2>Below is the list of books</h2>

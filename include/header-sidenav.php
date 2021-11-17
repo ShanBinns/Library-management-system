@@ -5,6 +5,11 @@
     Lab Class: Friday at 12PM
 -->
 
+<?php 
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -23,7 +23,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-
     <title>View Books Records</title>
 </head>
 <body> 
@@ -34,15 +33,16 @@
             </div>
             <div class="section-content">
 
-                <h2>Below is the list of issued books</h2><br>
+                <h2>Below is the list of books in the library</h2><br>
                 <p>Search records by title, year, Subject or author. Click the header of a column to sort table.</p>
 
             <div class="container">
 
+            <!--Update Book Modal-->
             <div id="updateModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
-                    <!-- Modal content-->
+                    
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Update Book Details</h4>
@@ -81,8 +81,11 @@
 
                 </div>
             </div>
+            <!--End of Update Book Modal-->
 
-            <!-- Table -->
+
+
+            <!-- View Book Table -->
             <table id='bookTable' class='display dataTable' width='100%'>
                 <thead>
                     <tr>
@@ -106,7 +109,6 @@
 
 <script>
         $(document).ready(function(){
-
             var bookDataTable = $('#bookTable').DataTable({
                 'processing': true,
                 'serverSide': true,
@@ -220,9 +222,42 @@
                     });
                 } 
                 
+            });   
+
+
+             // Issue record
+            $('#bookTable').on('click','.issueBook',function(){
+                var id = $(this).data('id');
+
+                $('#txt_bookid').val(id);
+                
+                $.ajax({
+                    url: 'ajaxfile.php',
+                    type: 'post',
+                    data: {request: 2, id: id},
+                    success: function(data){
+                        alert(id);  //To be removed
+                        //Redirects to details page and send id in url
+                        window.location.href = 'bookDetails.php?id='+id;
+
+                        //Change submission to book.php Send id to it. use Id to get data from database
+                        //press check out book, opens a little window to enter the patron Id
+                        //if in database, add info to borrow book list
+                    }
+                });
+
             });
+            
         });
-        </script>
+
+        
+    </script>
+
+    <?php 
+        
+    ?>
+
+
 
 </body>
 </html>

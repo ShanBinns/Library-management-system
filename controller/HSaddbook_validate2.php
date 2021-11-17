@@ -68,7 +68,7 @@
                     $_SESSION['callNumber'] = $callNumber; 
                     $_SESSION['subjectArea']  = $subjectArea; 
                     $_SESSION['copies']  = $copies; 
-                    header("Location: ../submission.php");
+                    header("Location: ../HSviewbooks.php");
                     exit();
                 }else{
                     session_start();
