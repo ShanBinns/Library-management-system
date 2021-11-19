@@ -16,5 +16,9 @@ $dbname = "highschoolbooks_db";
     
     }
 
+     //set timezone
+    date_default_timezone_set('America/Los_Angeles');
+
+    
 
 ?>

@@ -25,6 +25,7 @@
     <div class="header">
         <a href="" class="name"> </a>
         <div class="header-right">
+            <a> <?php $date = date('m/d/Y', time());echo $date;?></a>
             <a href="" class="Hello" id="dateTime"> <i class="fas fa-user"></i> 
             Hello 
             <?php if(!empty( $_SESSION['username'])) echo $_SESSION['username'] ; else {echo "";}?>

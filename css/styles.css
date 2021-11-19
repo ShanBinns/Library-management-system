@@ -53,7 +53,7 @@ Media Queries
 
 body{
     scroll-behavior: smooth;
-    font-family: var(--body-color-one);
+    font-family: var(--body-font);
     font-size: var(--normal-font-size);
     background-color: var(--body-color-two);
     color:var(--text-color);
@@ -487,7 +487,7 @@ input[type="radio"]{
     margin-top: 10px;
     padding:5px;
     border: var(--theme-color) 1px solid;
-    height: 950px;
+    height: 1000;
 }
 
 .section-heading{
@@ -750,7 +750,7 @@ z-index: -1;
 /*Submission Page*/
 .card {
     box-shadow: 0 4px 8px var(--text-color);
-    max-width: 500px;
+    max-width: 550px;
     margin: auto;
     text-align: center;
 }
@@ -760,13 +760,13 @@ color: var(--section-color);
 font-size: 22px;
 }
 .card p{
-    padding: 5px;
+    padding: 3px;
 }
 
 .card button {
 border: none;
 outline: 0;
-padding: 12px;
+padding: 8px;
 background-color: var(--first-color);
 text-align: center;
 cursor: pointer;
@@ -811,7 +811,6 @@ opacity: 0.7;
     border-collapse: collapse;
     margin-left: 20px;
     margin-top: 30px;
-    overflow:auto;
 }
 
 .table-view-books td{
@@ -834,13 +833,45 @@ opacity: 0.7;
     background-color: var(--color-light);
 }
 
+.table-view-books .pending{
+    width: 50%;
+    margin-left: 250px;
+}
+
+.table-view-books .pending td{
+    height: 50px;
+    text-align: center;
+}
+
+/*Table Buttons*/
 .btn-borrowed{
     background-color: #f44336;
+    color: var(--color-light);
 }
 
 .btn-returned{
     background-color: #4CAF50;
+    color: var(--color-light);
 }
+
+.btn-process{
+    background-color: #4CAF50;
+}
+
+.btn-delete{
+    background-color: #f44336;
+}
+
+.return-button{
+    float: right;
+    border: 1px solid var(--theme-color);
+    color: var(--color-light);
+    padding: 10px;
+    margin: 20px 0px 20px 0px;
+    font-size: var(--normal-font-size);
+    background: -webkit-linear-gradient(top, var(--first-color), var(--theme-color));
+}
+
 
 
 

@@ -1,8 +1,9 @@
 <?php 
-    session_start();
+    
     require_once "include/config.php";
     include 'include/header-sidenav.php'; 
 
+    session_start();
 ?>
 
 
@@ -236,7 +237,7 @@
                     type: 'post',
                     data: {request: 2, id: id},
                     success: function(data){
-                        alert(id);  //To be removed
+                        alert("Issue Book ID#" + id);  //To be removed
                         //Redirects to details page and send id in url
                         window.location.href = 'bookDetails.php?id='+id;
 

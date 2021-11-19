@@ -36,8 +36,15 @@
                     $_SESSION['type'] = $row['type'];
                     $_SESSION['password'] = $row['password'];
                     header("location: ../dashboard.php");
+                }else{
+                    session_start();
+                    $_SESSION['emailErr'] =$emailErr ;
+                    $_SESSION['passwordErr'] = $passwordErr  ;
+                    $_SESSION['loginErr'] = $loginErr;
+                    header("Location: ../login.php");
                 }
             }
+            
         }
         else{
             session_start();

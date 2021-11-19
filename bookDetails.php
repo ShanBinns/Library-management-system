@@ -1,12 +1,14 @@
 <?php 
     session_start();
+
     include 'include/header-sidenav.php'; 
     require_once "include/config.php";
 
-    //Gets id from table view
+    //Gets id from table view and stores it in session
     $id = $_GET['id'];
+    $_SESSION['id'] = $id;
 
-    //Gets info from the database  book table
+    //Gets info from the database book table and stores it
     $sql = "SELECT * FROM book WHERE id = '".$id."' ";
     $result = $conn->query($sql);
 
@@ -21,8 +23,13 @@
             $callNo = $row['callNo'];
             $subjectarea = $row['subjectarea'];
             $quantity = $row['quantity'];
+            $_SESSION['bookid'] = $id;
         }
     } 
+
+
+    
+
 ?>
 
 
@@ -36,8 +43,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     
 
@@ -47,26 +54,33 @@
     <div class="main-body">
         <div class="grid-container">
             <div class="section-heading">
-            
+                <!--Error message - when patron ID is not found-->
+                <?php 
+                    if(!empty($_SESSION['usernotfound'])){
+                        echo '<br><br><div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Incorrect card ID - Please enter valid digits for Patron card ID';
+                        unset($_SESSION['usernotfound']);
+                    }        
+                ?>
             </div>
             <div class="section-content">
-                <h2>Preview and Issue Books</h2><br>
-
+                <h2>Preview and Issue Book</h2><br>
+                
                 <!-- Search Modal -->
                 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header">Issue This Book to a Patron
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
 
                             <div class="modal-body">
                                 <h1>Please enter the patron card ID</h1>
-                                <form class="navbar-form " role="search">
+                                <form class="navbar-form "  method="post" action="controller/issue_controller.php">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter">
+                                        <input type="text" class="form-control" name="patronId" placeholder="Enter ID here">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Issue Book to Patron</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
                         </div>
