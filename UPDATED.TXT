@@ -1,0 +1,12 @@
+Updated issue book buttons and controller for delete and process buttons
+Updated account.php and it's controller
+Put session_start(); Before Include header 
+Update Icons in Modals
+Profile.php
+
+
+***Use Sessions for all Guest features 
+Maybe the only difference can be an additional nav bar. 
+Use sessions for everything else
+
+GUEST features* update login_validate page, remove guest nav, update regular nav, and guest book details 

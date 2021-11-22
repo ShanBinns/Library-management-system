@@ -65,6 +65,7 @@ session_start();
                     <fieldset class="other-actions">
                         <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
                         <p>Forgot your password? <a href="passwordReset.php">Click to reset password</a>.</p>
+                        <p>Go back to Home <a href="index.php">Click Here</a>.</p>
                     </fieldset>
                 </form>
             </div>

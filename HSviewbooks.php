@@ -1,9 +1,9 @@
 <?php 
-    
+    session_start();
     require_once "include/config.php";
     include 'include/header-sidenav.php'; 
 
-    session_start();
+    
 ?>
 
 
@@ -51,23 +51,23 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="title" >Title</label>
+                                <label for="title" > <i class="fas fa-book-open"></i> Title</label>
                                 <input type="text" class="form-control" id="title" placeholder="Enter title" required>            
                             </div>
                             <div class="form-group">
-                                <label for="author" >Author</label>    
+                                <label for="author" ><i class="fas fa-pen-nib"></i> Author</label>    
                                 <input type="text" class="form-control" id="author"  placeholder="Enter Author">                          
                             </div>        
                             <div class="form-group">
-                                <label for="year" >Year</label>    
+                                <label for="year" ><i class="far fa-calendar"></i> Year</label>    
                                 <input type="text" class="form-control" id="year"  placeholder="Enter Year">                          
                             </div>
                             <div class="form-group">
-                                <label for="bookcover" >Cover</label>    
+                                <label for="bookcover" ><i class="fas fa-images"></i> Cover</label>    
                                 <input type="text" class="form-control" id="bookcover"  placeholder="Enter cover">                          
                             </div>
                             <div class="form-group">
-                                <label for="quantity" >Quantity</label>    
+                                <label for="quantity" ><i class="fas fa-list-ol"></i>Quantity</label>    
                                 <input type="text" class="form-control" id="quantity"  placeholder="Enter Quantity">                          
                             </div>
 
@@ -226,7 +226,7 @@
             });   
 
 
-             // Issue record
+             // Issue record - sends book ID in URL to view book details page
             $('#bookTable').on('click','.issueBook',function(){
                 var id = $(this).data('id');
 
@@ -237,13 +237,9 @@
                     type: 'post',
                     data: {request: 2, id: id},
                     success: function(data){
-                        alert("Issue Book ID#" + id);  //To be removed
-                        //Redirects to details page and send id in url
+                        alert("Issue Book ID#" + id);  
                         window.location.href = 'bookDetails.php?id='+id;
 
-                        //Change submission to book.php Send id to it. use Id to get data from database
-                        //press check out book, opens a little window to enter the patron Id
-                        //if in database, add info to borrow book list
                     }
                 });
 

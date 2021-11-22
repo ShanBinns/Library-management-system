@@ -1,8 +1,8 @@
 <?php 
     session_start();
 
-    include 'include/header-sidenav.php'; 
-    require_once "include/config.php";
+    include '../include/header-sidenav.php'; 
+    require_once "../include/config.php";
 
     //Gets id from table view and stores it in session
     $id = $_GET['id'];
@@ -39,7 +39,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -64,33 +64,11 @@
                 ?>
             </div>
             <div class="section-content">
-                <h2>Preview and Issue Book</h2><br>
-                
-                <!-- Search Modal -->
-                <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">Issue This Book to a Patron
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <h1><i class="fas fa-user"></i> Please enter the patron card ID</h1>
-                                <form class="navbar-form "  method="post" action="controller/issue_controller.php">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="patronId" placeholder="Enter ID here">
-                                    </div>
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <!--End of Modal-->
+                <h2>Preview Book</h2><br>
                 
                     <!--Card-->
                     <div class="card">
-                        <span class="zoom"><img src="img/<?php echo $bookcover;?>" alt="" height="70%" width="50%"> </span>
+                        <span class="zoom"><img src="../img/<?php echo $bookcover;?>" alt="" height="70%" width="50%"> </span>
 
                         <h1><?php echo $title ;?></h1>
                         <p class="author"><?php echo $author ;?></p>
@@ -104,7 +82,9 @@
                             Copies: <?php echo $quantity ;?> <br>
                         </p>
                         <br>
-                        <p><button type="button" data-toggle="modal" data-target="#searchModal" >Click to Issue Book to Patron</button></p>
+                        <p><button type="button"  onclick="location.href='../login.php'" >Click to Borrow Book</button><br>
+                        </p>
+                        <button type="button"  onclick="location.href='guestviewbooks.php'" >Go Back to View all Books</button>
                     </div>
             </div>
         </div>

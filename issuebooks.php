@@ -5,6 +5,7 @@
     
     /*If sessions are not empty then use the IDs retrieve additional information
     Uses this information to populate pending process table. Update processbook database table. */
+    
     $current_date = date('m/d/Y');
     if(!empty($_SESSION['cardid'])  && !empty($_SESSION['bookid'])){
         $cardid = $_SESSION['cardid'];
@@ -142,11 +143,11 @@
                             
                             <td class="action">   
 
-                                <button  name="process"> <i class="fas fa-check-square btn-process "></i>
-                                </button>
+                            <button class='btn btn-sm btn-success' name="process" 
+                                value="<?=$pending['processid']?> ">Approve</button>
                                 
-                                <button  name="delete"> <i class="fas fa-trash-alt btn-delete"></i>
-                                </button>
+                            <button name="delete" class='btn btn-sm btn-danger' value="<?=$pending['processid']?> ">Delete</button>
+                                
                                 
                                 
                             </td>                   
@@ -200,10 +201,10 @@
 
                             <td class="status ">    
                                 <?php  if($joinedBooks['status'] == "pending"):?>
-                                    <button class="btn-borrowed">Borrowed</button>
+                                    <button class="btn-borrowed" disabled>Borrowed</button>
                                 <?php  endif;?> 
                                 <?php  if($joinedBooks['status'] == "returned"):?>
-                                    <button class="btn-returned">Returned</button>
+                                    <button class="btn-returned" disabled>Returned</button>
                                 <?php  endif;?> 
                             </td>            
 
@@ -226,7 +227,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <h1>Please enter the Issue ID</h1>
+                                <h1><i class="fas fa-book"></i> Please enter the Issue ID</h1>
                                 <form class="navbar-form "  method="post" action="controller/issue_controller.php">
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="issueid" placeholder="Enter ID here">
@@ -243,64 +244,6 @@
 
 
 
-
-                        <br><br><br><br><br><br><br>
-        <!--Old Table-->
-            <div class="section-content">
-
-            <h2>Below is the list of books</h2>
-                <div class="table-view-books">
-                <form action="borrow.php?page=borrow" method="post">
-                    <table>
-                        <tr>
-                            <th>Cover</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Year</th>                
-                            <th>Subject</th>
-                            <th>Copies</th>
-                            <th>Action</th>
-                        </tr>
-                        <tbody>
-                        <?php  if(empty($book_list)):?>     
-                            <tr>
-                                <td colspan="5" style="text-align:center;">There are no books in the library</td>
-                            </tr>  
-                        <?php  else:?> 
-                        <?php  foreach ($book_list as $list): ?> 
-                        <tr>
-                            <td class="img">                            
-                                <img src="img/<?=$list['bookcover']?>" width="50" height="50" alt="<?=$list['title']?>">  
-                                <br>
-
-                                <a href="HSviewbooks.php?page=view&remove=<?=$product['id']?>" class="remove">Click for preview</a>                                
-                            </td>
-                            <td>
-                            <?=$list['title']?>
-                            
-                            </td>
-                            <td class="Author"><?=$list['author']?> </td>
-                            <td class="Year"><?=$list['year']?> </td>
-                            <td class="subjectArea"><?=$list['subjectarea']?> </td>
-                            <td class="quantity"><?=$list['quantity']?> </td>
-
-                            <td class="action">    
-                                <a href="edit"> <i class="fas fa-edit"></i></a>
-                                <a href="remove">   <i class="fas fa-trash-alt"></i></a>
-                                <button>Add to patron cart</button>
-                                <br>
-                        <!--    <a href="cart.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>  -->
-                            </td>                   
-                        </tr>
-
-                        <?php  endforeach;?>
-                        <?php  endif;?> 
-
-                    </tbody>
-                
-                </table>
-            </form>
-        </div>
 
         </div>
     </div>

@@ -12,6 +12,15 @@
     $loginErr = "Incorrect Password or Username";
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
+        
+        //If user logs in as a gust
+        if(isset($_POST['guest_submit'])){
+            session_start();
+            $_SESSION['type'] = "guest";
+            header("location: ../guest/guestviewbooks.php");
+        }
+
+        //if user uses the login page
         if(isset($_POST['submit'])){
             $email = mysqli_real_escape_string($conn, $_POST['email']);
             $password = mysqli_real_escape_string($conn, $_POST['password']);

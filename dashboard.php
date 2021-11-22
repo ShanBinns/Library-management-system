@@ -36,9 +36,9 @@
 
                     <div class="card">
                         <div class="dash-card2">
-                            <h5 class="card-title"> Log Borrowed Books</h5>
+                            <h5 class="card-title"> Book Rental</h5>
                             <p class="card-text"><i class="fas fa-asterisk"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='issuebooks.php'"><i class="fas fa-share"></i></button>
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                         <div class="dash-card3">
                             <h5 class="card-title">Manage Accounts</h5>
                             <p class="card-text"><i class="fas fa-users-cog"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='account.php'"><i class="fas fa-share"></i></button>
                         </div>
                     </div>
                 </div>
@@ -64,15 +64,15 @@
                         <div class="dash-card2">
                             <h5 class="card-title">Add Books</h5>
                             <p class="card-text"><i class="fas fa-plus-circle"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='HSaddbook.php'"><i class="fas fa-share"></i></button>
                         </div>
                     </div>
 
                     <div class="card">
                         <div class="dash-card3">
-                            <h5 class="card-title">Log Returned Books</h5>
+                            <h5 class="card-title">My Profile</h5>
                             <p class="card-text"><i class="fas fa-exchange-alt"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='profile.php'"><i class="fas fa-share"></i></button>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="dash-container3"> 
                     <div class="card">
                         <div class="dash-card1">
-                            <h5 class="card-title">Books Returned</h5>
+                            <h5 class="card-title"  onclick="location.href='issuebooks.php'">Books Returned</h5>
                             <p class="card-text">5</p>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         <div class="dash-card2">
                             <h5 class="card-title">View Books</h5>
                             <p class="card-text"><i class="fas fa-eye"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='HSviewbooks.php'"><i class="fas fa-share"></i></button>
                         </div>
                     </div>
 
@@ -97,7 +97,7 @@
                         <div class="dash-card3">
                             <h5 class="card-title">Search Patron Records</h5>
                             <p class="card-text"><i class="fas fa-search"></i></p>
-                            <button class="dash"><i class="fas fa-share"></i></button>
+                            <button class="dash" onclick="location.href='patrons.php'"><i class="fas fa-share"></i></button>
                         </div>
                 </div>
             </div>

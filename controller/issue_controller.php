@@ -39,10 +39,9 @@
     //If the remove button is pushed on the pending table
     if(isset($_POST['delete'])){
         //This functins is to be fixed. It is currently only deleting the last in array 
-        $proid = $_POST['id'];
-        echo $proid;
+        $processid =  $_POST['delete'];
 
-        $sql = "DELETE FROM processbook WHERE processid = '".$proid."'";
+        $sql = "DELETE FROM processbook WHERE processid = '".$processid."'";
         if(mysqli_query($conn, $sql))
         {
             $_SESSION['statusmessage'] = "Record Successfully Deleted";
@@ -55,9 +54,9 @@
 
     //If the process button is pushed on the pending table get book and patron data and store data in borrowed book page
     if(isset($_POST['process'])){
-        $proid = $_POST['id'];
-        
-        $sql = "SELECT * FROM processbook WHERE processid = '".$proid."'";
+        $processid =  $_POST['process'];
+
+        $sql = "SELECT * FROM processbook WHERE processid = '".$processid."'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -80,7 +79,7 @@
         
         $queryTwo = mysqli_query($conn, "INSERT INTO returnbook(cardid, isbn, libid,status) VALUES ('". $cardid ."', '". $isbn ."','". $libid ."','". $status ."')");
 
-        $delQuery = mysqli_query($conn, "DELETE FROM processbook WHERE processid = '".$proid."'");
+        $delQuery = mysqli_query($conn, "DELETE FROM processbook WHERE processid = '".$processid."'");
         $decreaseQuery = mysqli_query($conn, "UPDATE book SET quantity=quantity-1 WHERE isbn = '".$isbn."'");
                     
         if(mysqli_query($conn, $query))
@@ -92,7 +91,7 @@
             $_SESSION['statusmessage'] = "Record Could not be Processed. Please try again later!";
             header("Location: ../issuebooks.php");
         }
-        mysqli_close($conn);       
+        mysqli_close($conn);    
 
     }
 

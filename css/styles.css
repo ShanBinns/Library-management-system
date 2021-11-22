@@ -8,8 +8,10 @@ Dashboard
 Add book form and progress bar
 Submission page
 Issue Books Modal
+Profile
 Media Queries
 */
+
 
 :root{
     
@@ -302,7 +304,7 @@ margin-bottom: 5px;
     color: var(--body-color-two);
     text-align: center;
     padding: 15px;
-    width: 200px;
+    width: 250px;
     font-size: var(--h2-font-size);
     transition: all 0.5s;
     cursor: pointer;
@@ -487,7 +489,7 @@ input[type="radio"]{
     margin-top: 10px;
     padding:5px;
     border: var(--theme-color) 1px solid;
-    height: 1000;
+    height: 1300;
 }
 
 .section-heading{
@@ -873,6 +875,42 @@ opacity: 0.7;
 }
 
 
+/*Profile*/
+
+
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar{
+    margin: 20px 10px 10px 10px;
+    width: 200px;
+    height: 200px;
+    justify-items: center;
+}
+
+.profile-contents{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.profile-btn{
+    margin: 50px 50px 50px 800px;
+    background-color:var(--theme-color);
+    border-radius: 10%;
+    border: none;
+    color: var(--title-color);
+    text-align: center;
+    padding: 15px;
+    width: 250px;
+    font-size: var(--h2-font-size);
+    transition: all 0.5s;
+    cursor: pointer;
+}
 
 
 /***** Smaller and large screens ******/

@@ -26,8 +26,12 @@
         <div class="page-heading">
             <h3><strong>Online Library Management System</strong></h3>
             <div class="welcome-button container">             
-                    <button type="submit" class="welcome-btn" onclick="location.href='login.php'"><span>Login In Here</span></button>                       
-                </div>
+                    <button type="submit" class="welcome-btn" onclick="location.href='login.php'"><span>Login In Here</span></button> 
+                    <form method="post" action="controller/login_validate.php">
+                        <button type="submit" name="guest_submit" class="welcome-btn"><span>Log in as a Guest</span></button>   
+                    </form>
+            
+                </div> 
         </div>
 
         <div class="row-index">
