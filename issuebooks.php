@@ -144,7 +144,7 @@
                             <td class="action">   
 
                             <button class='btn btn-sm btn-success' name="process" 
-                                value="<?=$pending['processid']?> ">Approve</button>
+                                value="<?=$pending['processid']?> ">Process</button>
                                 
                             <button name="delete" class='btn btn-sm btn-danger' value="<?=$pending['processid']?> ">Delete</button>
                                 
